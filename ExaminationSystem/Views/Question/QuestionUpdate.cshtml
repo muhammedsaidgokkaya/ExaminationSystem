@@ -1,0 +1,41 @@
+﻿@using EntityLayer.Entity;
+@model Question
+
+@{
+    ViewData["Title"] = "QuestionUpdate";
+    Layout = "~/Views/Shared/_TeacherShared.cshtml";
+}
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+	<div id="kt_content_container" class="container-xxl">
+		<div class="card mb-5 mb-xl-10">
+			<div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
+				<div class="card-title m-0">
+					<h3 class="fw-bolder m-0">Soru Düzenle</h3>
+				</div>
+			</div>
+			<div id="kt_account_profile_details" class="collapse show">
+				<form class="form" action="/Question/QuestionUpdate" id="kt_modal_add_customer_form" method="post" enctype="multipart/form-data">
+					<div class="card-body border-top p-9">
+						<div class="row mb-6">
+							<label class="col-lg-4 col-form-label fw-bold fs-6">
+								<span class="required">Soru Adı</span>
+								<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="" data-bs-original-title="Phone number must be active" aria-label="Phone number must be active"></i>
+							</label>
+							<div class="col-lg-8 fv-row fv-plugins-icon-container">
+								<input type="text" name="QuestionName" class="form-control form-control-lg form-control-solid" placeholder="Kategori adı" value="@Model.QuestionName">
+								<div class="fv-plugins-message-container invalid-feedback"></div>
+							</div>
+							<input type="text" name="Id" class="form-control form-control-lg form-control-solid" placeholder="Kategori adı" value="@Model.Id" hidden>
+						</div>
+					</div>
+					<div class="card-footer d-flex justify-content-end py-6 px-9">
+						<button type="reset" class="btn btn-light btn-active-light-primary me-2">Vazgeç</button>
+						<button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Kaydet</button>
+					</div>
+					<input type="hidden"><div></div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

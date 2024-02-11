@@ -1,0 +1,85 @@
+﻿@using EntityLayer.Entity;
+@model Quiz
+
+@{
+    ViewData["Title"] = "QuizUpdate";
+    Layout = "~/Views/Shared/_TeacherShared.cshtml";
+}
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+	<div id="kt_content_container" class="container-xxl">
+		<div class="card mb-5 mb-xl-10">
+			<div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
+				<div class="card-title m-0">
+					<h3 class="fw-bolder m-0">Sınav Düzenle</h3>
+				</div>
+			</div>
+			<div id="kt_account_profile_details" class="collapse show">
+				<form class="form" action="/Quiz/QuizUpdate" id="kt_modal_add_customer_form" method="post" enctype="multipart/form-data">
+					<div class="card-body border-top p-9">
+						<div class="row mb-6">
+							<label class="col-lg-4 col-form-label fw-bold fs-6 py-2">
+								<span class="required">Sınav Adı</span>
+								<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="" data-bs-original-title="Phone number must be active" aria-label="Phone number must be active"></i>
+							</label>
+							<div class="col-lg-8 fv-row fv-plugins-icon-container py-2">
+								<input type="text" name="QuizName" class="form-control form-control-lg form-control-solid" placeholder="Kategori adı" value="@Model.QuizName">
+								<div class="fv-plugins-message-container invalid-feedback"></div>
+							</div>
+							<label class="col-lg-4 col-form-label fw-bold fs-6 py-2">
+								<span class="required">Sınav Açıklaması</span>
+								<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="" data-bs-original-title="Phone number must be active" aria-label="Phone number must be active"></i>
+							</label>
+							<div class="col-lg-8 fv-row fv-plugins-icon-container py-2">
+								<textarea type="text" name="QuizDescription" class="form-control form-control-lg form-control-solid" placeholder="Kategori adı">@Model.QuizDescription</textarea>
+								<div class="fv-plugins-message-container invalid-feedback"></div>
+							</div>
+							<label class="col-lg-4 col-form-label fw-bold fs-6 py-2">
+								<span class="required">Sınav Süresi</span>
+								<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="" data-bs-original-title="Phone number must be active" aria-label="Phone number must be active"></i>
+							</label>
+							<div class="col-lg-8 fv-row fv-plugins-icon-container py-2">
+								<input type="number" name="QuizDuration" class="form-control form-control-lg form-control-solid" placeholder="@Model.QuizDuration" value="@Model.QuizDuration">
+								<div class="fv-plugins-message-container invalid-feedback"></div>
+							</div>
+							<label class="col-lg-4 col-form-label fw-bold fs-6 py-2">
+								<span class="required">Başarı Puanı</span>
+								<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="" data-bs-original-title="Phone number must be active" aria-label="Phone number must be active"></i>
+							</label>
+							<div class="col-lg-8 fv-row fv-plugins-icon-container py-2">
+								<input type="number" name="QuizScore" class="form-control form-control-lg form-control-solid" placeholder="Kategori adı" value="@Model.QuizScore">
+								<div class="fv-plugins-message-container invalid-feedback"></div>
+							</div>
+							<label class="col-lg-4 col-form-label fw-bold fs-6 py-2">
+								<span class="required">Başarı Puanı</span>
+								<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="" data-bs-original-title="Phone number must be active" aria-label="Phone number must be active"></i>
+							</label>
+							<div class="col-lg-8 fv-row fv-plugins-icon-container py-2">
+								<select class="form-control form-control-solid" name="CategoryId">
+									<option value="">Kategori Seçin</option>
+									@foreach (var category in ViewBag.Categories)
+									{
+										<option value="@category.Id">@category.CategoryName</option>
+									}
+									@if (Model.CategoryId != null)
+									{
+										<script>
+											$("select[name='CategoryId']").val("@Model.CategoryId");
+										</script>
+									}
+								</select>
+								<div class="fv-plugins-message-container invalid-feedback"></div>
+							</div>
+							<input type="text" name="Id" class="form-control form-control-lg form-control-solid" placeholder="Kategori adı" value="@Model.Id" hidden>
+						</div>
+					</div>
+					<div class="card-footer d-flex justify-content-end py-6 px-9">
+						<button type="reset" class="btn btn-light btn-active-light-primary me-2">Vazgeç</button>
+						<button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Kaydet</button>
+					</div>
+					<input type="hidden"><div></div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

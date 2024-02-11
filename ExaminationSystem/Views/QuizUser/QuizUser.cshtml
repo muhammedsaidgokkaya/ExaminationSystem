@@ -1,0 +1,94 @@
+﻿@using EntityLayer.Entity
+@model List<QuizUser>
+
+@{
+    ViewData["Title"] = "QuizUser";
+    Layout = "~/Views/Shared/_TeacherShared.cshtml";
+}
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div id="kt_content_container" class="container-xxl">
+        <div class="card">
+            <div class="card-header border-0 pt-6">
+            </div>
+            <div class="card-body pt-0">
+                <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table">
+                    <thead>
+                        <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                            <th class=" min-w-125px">#</th>
+                            <th class="min-w-125px">Sınav Adı</th>
+                            <th class="min-w-125px">Öğrenci Adı</th>
+                            <th class="min-w-125px">Sınav Süresi</th>
+                            <th class="min-w-125px">Öğrencinin Başarı Puanı</th>
+                            <th class="min-w-125px">Sınav Başlangıç Saati</th>
+                            <th class="min-w-125px">Sınav Bitiş Saati</th>
+                            <th class="min-w-125px">Sınav Kontrol</th>
+                            <th class="min-w-125px">Başarı Durumu</th>
+                        </tr>
+                    </thead>
+                    <tbody class="fw-bold text-gray-600" id="kategoriler">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @item.Id
+                                </td>
+
+                                <td>
+                                    @item.Quiz.QuizName
+                                </td>
+
+                                <td>
+                                    @item.User.Name
+                                </td>
+
+                                <td>
+                                    @item.Quiz.QuizDuration dk.
+                                </td>
+
+                                <td>
+                                    @item.UserScore puan
+                                </td>
+
+                                <td>
+                                    @item.StartQuiz
+                                </td>
+
+                                <td>
+                                    @item.FinishQuiz
+                                </td>
+
+                                @if (item.IsFinished)
+                                {
+                                    <td style="color:green;">
+                                        Tamamlandı
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td style="color:red;">
+                                        Tamamlanmadı
+                                    </td>
+                                }
+
+                                @if (item.Quiz.QuizScore <= item.UserScore)
+                                {
+                                    <td style="color:green;">
+                                        Başarılı
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td style="color:red;">
+                                        Başarısız
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

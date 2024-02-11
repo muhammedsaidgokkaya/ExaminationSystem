@@ -1,0 +1,56 @@
+﻿@using EntityLayer.Entity;
+@model AnswerValue
+
+@{
+    ViewData["Title"] = "AnswerValue";
+    Layout = "~/Views/Shared/_TeacherShared.cshtml";
+}
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div id="kt_content_container" class="container-xxl">
+        <div class="card mb-5 mb-xl-10">
+            <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse"
+                 data-bs-target="#kt_account_profile_details" aria-expanded="true"
+                 aria-controls="kt_account_profile_details">
+                <div class="card-title m-0">
+                    <h3 class="fw-bolder m-0">Cevap Ekle</h3>
+                </div>
+            </div>
+            <div id="kt_account_profile_details" class="collapse show">
+                <form class="form" asp-action="AnswerValueAdd" method="post" enctype="multipart/form-data">
+                    <div class="card-body border-top p-9">
+                        <div class="row mb-6">
+                            <label class="col-lg-4 col-form-label fw-bold fs-6 py-2">
+                                <span class="required">Cevap Adı</span>
+                            </label>
+                            <div class="col-lg-8 fv-row fv-plugins-icon-container py-2">
+                                <input type="text" name="ValueName"
+                                       class="form-control form-control-lg form-control-solid" placeholder=""
+                                       value="">
+                                <div class="fv-plugins-message-container invalid-feedback"></div>
+                            </div>
+                            <label class="col-lg-4 col-form-label fw-bold fs-6 py-2">
+                                <span class="required">Doğruluk</span>
+                            </label>
+                            <div class="col-lg-8 fv-row fv-plugins-icon-container py-2">
+                                <select class="form-control form-control-solid" name="IsTrue">
+                                    <option value="@true">Doğru Cevap</option>
+                                    <option value="@false">Yanlış Cevap</option>
+                                </select>
+                                <div class="fv-plugins-message-container invalid-feedback"></div>
+                            </div>
+                            <input type="text" name="QuestionId" class="form-control form-control-lg form-control-solid"
+                                   placeholder="" value="@Model.QuestionId" hidden>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-end py-6 px-9">
+                        <button type="reset" class="btn btn-light btn-active-light-primary me-2">Vazgeç</button>
+                        <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">
+                            Kaydet
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

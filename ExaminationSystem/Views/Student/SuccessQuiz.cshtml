@@ -1,0 +1,68 @@
+﻿@using EntityLayer.Entity
+@model List<QuizUser>
+
+@{
+    ViewData["Title"] = "SuccessQuiz";
+    Layout = "~/Views/Shared/_StudentShared.cshtml";
+}
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div id="kt_content_container" class="container-xxl">
+        <div class="card">
+            <div class="card-body pt-0">
+                <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table">
+                    <thead>
+                        <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                            <th class=" min-w-125px">#</th>
+                            <th class="min-w-125px">Sınav Adı</th>
+                            <th class="min-w-125px">Kategori Adı</th>
+                            <th class="min-w-125px">Öğrenci Adı</th>
+                            <th class="min-w-125px">Öğrencinin Başarı Puanı</th>
+                            <th class="min-w-125px">Durumu</th>
+                        </tr>
+                    </thead>
+                    <tbody class="fw-bold text-gray-600" id="kategoriler">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @item.Id
+                                </td>
+
+                                <td>
+                                    @item.Quiz.QuizName
+                                </td>
+
+                                <td>
+                                    @item.Quiz.Category.CategoryName
+                                </td>
+
+                                <td>
+                                    @item.User.Name
+                                </td>
+
+                                <td>
+                                    @item.UserScore puan
+                                </td>
+                                
+                                @if (item.Quiz.QuizScore <= item.UserScore)
+                                {
+                                    <td style="color:green;">
+                                        Başarıyla Tamamlamıştır
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td style="color:red;">
+                                        Kaldınız...
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
